@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from './components/Header/Header';
-import TaskList from './components/TaskList/TaskList';
+import Header from './Components/Header/Header';
+import TaskList from './Components/TaskList/TaskList';
 import './App.css';
 
 function App() {
