@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import Header from './Components/Header/Header';
+import TaskList from './Components/TaskList/TaskList';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="app">
+      <Header />
+      <main>
+        <div className="container">
+          <div className="app-intro">
+            <h2>Welcome to TaskMaster</h2>
+            <p>
+              Stay organized and boost your productivity with TaskMaster.
+              Add tasks, set priorities, and track your progress all in one place.
+            </p>
+          </div>
+          <TaskList />
+        </div>
+      </main>
+      <footer className="footer">
+        <div className="container">
+          <p>TaskMaster &copy; {new Date().getFullYear()} | Simplify your day</p>
+        </div>
+      </footer>
+    </div>
+  );
 }
 
-export default App
+export default App;
