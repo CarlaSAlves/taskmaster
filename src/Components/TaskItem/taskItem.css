@@ -1,0 +1,36 @@
+.task-item {
+    background-color: var(--surface-color);
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s, transform 0.2s;
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+  
+  .task-item:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+  
+  .task-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .task-content p {
+    margin: 0;
+    font-size: var(--font-size-md);
+    word-break: break-word;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

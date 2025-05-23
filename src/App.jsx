@@ -1,9 +1,26 @@
-import React from 'react';
-import Header from './Components/Header/Header';
+import React, { useState } from 'react';
+import Header from './components/Header/Header';
+import TaskForm from './Components/TaskForm/TaskForm';
 import TaskList from './Components/TaskList/TaskList';
 import './App.css';
 
 function App() {
+  const [tasks, setTasks] = useState([]);
+
+  // Função para adicionar uma nova tarefa
+  const addTask = (text) => {
+    // Criar um novo objeto de tarefa
+    const newTask = {
+      id: Date.now(), // Usar timestamp como ID único
+      text: text,
+      completed: false,
+      createdAt: new Date()
+    };
+    
+    // Adicionar a nova tarefa ao array de tarefas
+    setTasks([...tasks, newTask]);
+  };
+
   return (
     <div className="app">
       <Header />
@@ -16,7 +33,9 @@ function App() {
               Add tasks, set priorities, and track your progress all in one place.
             </p>
           </div>
-          <TaskList />
+          
+          <TaskForm onAddTask={addTask} />
+          <TaskList tasks={tasks} />
         </div>
       </main>
       <footer className="footer">
