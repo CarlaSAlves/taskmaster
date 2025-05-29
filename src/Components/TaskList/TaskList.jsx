@@ -2,12 +2,22 @@ import React from 'react';
 import TaskItem from '../TaskItem/TaskItem';
 import './TaskList.css';
 
-const TaskList = ({ tasks }) => {
+const TaskList = ({ tasks, onToggleComplete }) => {
+
+  const completedCount = tasks.filter(task => task.completed).length;
+  
   return (
     <div className="task-list">
       <div className="task-list-header">
         <h2>My Tasks</h2>
-        <span className="task-count">{tasks.length}</span>
+        <div className="task-counts">
+          <span className="task-count">{tasks.length}</span>
+          {tasks.length > 0 && (
+            <span className="completed-count">
+              {completedCount} of {tasks.length} completed
+            </span>
+          )}
+        </div>
       </div>
       
       <div className="task-list-content">
@@ -18,7 +28,11 @@ const TaskList = ({ tasks }) => {
           </div>
         ) : (
           tasks.map((task) => (
-            <TaskItem key={task.id} task={task} />
+            <TaskItem 
+              key={task.id} 
+              task={task} 
+              onToggleComplete={onToggleComplete}
+            />
           ))
         )}
       </div>

@@ -21,6 +21,15 @@ function App() {
     setTasks([...tasks, newTask]);
   };
 
+    // Função para alternar o estado de conclusão de uma tarefa
+    const toggleTaskComplete = (taskId) => {
+      setTasks(tasks.map(task => 
+        task.id === taskId 
+          ? { ...task, completed: !task.completed } 
+          : task
+      ));
+    };
+
   return (
     <div className="app">
       <Header />
@@ -35,7 +44,8 @@ function App() {
           </div>
           
           <TaskForm onAddTask={addTask} />
-          <TaskList tasks={tasks} />
+          <TaskList tasks={tasks} 
+          onToggleComplete={toggleTaskComplete} />
         </div>
       </main>
       <footer className="footer">

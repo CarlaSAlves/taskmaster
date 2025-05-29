@@ -1,11 +1,19 @@
 import React from 'react';
 import './TaskItem.css';
 
-const TaskItem = ({ task }) => {
+const TaskItem = ({ task, onToggleComplete }) => {
   return (
-    <div className="task-item">
+    <div className={`task-item ${task.completed ? 'completed' : ''}`}>
       <div className="task-content">
-        <p>{task.text}</p>
+        <label className="checkbox-container">
+          <input 
+            type="checkbox" 
+            checked={task.completed}
+            onChange={() => onToggleComplete(task.id)}
+          />
+          <span className="checkmark"></span>
+        </label>
+        <p className="task-text">{task.text}</p>
       </div>
     </div>
   );
