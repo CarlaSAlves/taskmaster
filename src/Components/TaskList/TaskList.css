@@ -5,6 +5,7 @@
   margin-top: var(--spacing-xl);
   overflow: hidden;
   transition: box-shadow 0.3s ease;
+  color: var(--text-primary-dark);
 }
 
 .task-list:hover {
@@ -38,7 +39,7 @@
 .empty-list {
   padding: var(--spacing-xxl) var(--spacing-lg);
   text-align: center;
-  color: var(--text-secondary);
+  color: var(--text-secondary-dark);
   font-style: italic;
 }
 
@@ -49,8 +50,9 @@
 }
 .task-list-content {
   padding: var(--spacing-md);
-}
+  color: var(--text-secondary);
 
+}
 .task-count {
   background-color: var(--surface-color);
   color: var(--secondary-color);
@@ -68,6 +70,6 @@
 
 .completed-count {
   font-size: var(--font-size-sm);
-  color: var(--text-secondary);
+  color: var(--text-primary-dark);
   margin-top: 4px;
 }
