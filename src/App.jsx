@@ -7,27 +7,30 @@ import './App.css';
 function App() {
   const [tasks, setTasks] = useState([]);
 
-  // Função para adicionar uma nova tarefa
   const addTask = (text) => {
-    // Criar um novo objeto de tarefa
+    
     const newTask = {
-      id: Date.now(), // Usar timestamp como ID único
+      id: Date.now(), 
       text: text,
       completed: false,
       createdAt: new Date()
     };
     
-    // Adicionar a nova tarefa ao array de tarefas
     setTasks([...tasks, newTask]);
   };
 
-    // Função para alternar o estado de conclusão de uma tarefa
+    // change the task's completed status
     const toggleTaskComplete = (taskId) => {
       setTasks(tasks.map(task => 
         task.id === taskId 
           ? { ...task, completed: !task.completed } 
           : task
       ));
+    };
+
+    // Delete a task by its ID
+    const deleteTask = (taskId) => {
+      setTasks(tasks.filter(task => task.id !== taskId));
     };
 
   return (
@@ -45,7 +48,8 @@ function App() {
           
           <TaskForm onAddTask={addTask} />
           <TaskList tasks={tasks} 
-          onToggleComplete={toggleTaskComplete} />
+          onToggleComplete={toggleTaskComplete} 
+          onDeleteTask={deleteTask} />
         </div>
       </main>
       <footer className="footer">
