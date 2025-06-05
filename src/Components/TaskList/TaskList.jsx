@@ -2,7 +2,7 @@ import React from 'react';
 import TaskItem from '../TaskItem/TaskItem';
 import './TaskList.css';
 
-const TaskList = ({ tasks, onToggleComplete, onDeleteTask }) => {
+const TaskList = ({ tasks, onToggleComplete, onDeleteTask, onEditTask }) => {
 
   const completedCount = tasks.filter(task => task.completed).length;
   
@@ -33,6 +33,7 @@ const TaskList = ({ tasks, onToggleComplete, onDeleteTask }) => {
               task={task} 
               onToggleComplete={onToggleComplete}
               onDeleteTask={onDeleteTask}
+              onEditTask={onEditTask}
             />
           ))
         )}

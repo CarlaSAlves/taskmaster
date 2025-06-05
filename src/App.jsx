@@ -9,6 +9,7 @@ function App() {
 
   const addTask = (text) => {
     
+    // Add a new task with a unique ID and current timestamp
     const newTask = {
       id: Date.now(), 
       text: text,
@@ -19,7 +20,7 @@ function App() {
     setTasks([...tasks, newTask]);
   };
 
-    // change the task's completed status
+    // Change the task's completed status
     const toggleTaskComplete = (taskId) => {
       setTasks(tasks.map(task => 
         task.id === taskId 
@@ -31,6 +32,15 @@ function App() {
     // Delete a task by its ID
     const deleteTask = (taskId) => {
       setTasks(tasks.filter(task => task.id !== taskId));
+    };
+
+    //Function to edit a task
+    const editTask = (taskId, newText) => {
+      setTasks(tasks.map(task => 
+        task.id === taskId 
+          ? { ...task, text: newText, updatedAt: new Date() } 
+          : task
+      ));
     };
 
   return (
@@ -49,7 +59,8 @@ function App() {
           <TaskForm onAddTask={addTask} />
           <TaskList tasks={tasks} 
           onToggleComplete={toggleTaskComplete} 
-          onDeleteTask={deleteTask} />
+          onDeleteTask={deleteTask} 
+          onEditTask={editTask}/>
         </div>
       </main>
       <footer className="footer">
